@@ -14,7 +14,7 @@ export default function Cadastro() {
 
         const response = await API.post("/users", dados)
       } catch (error) {
-        alert
+        
       }
     }
     
