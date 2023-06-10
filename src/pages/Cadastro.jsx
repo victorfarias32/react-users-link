@@ -1,10 +1,8 @@
-import { useState } from "react"
-import { API } from "../services/Api"
-import { Link } from "react-router-dom"
-
+import { useState } from "react";
+import { API } from "../services/Api";
+import { Link } from "react-router-dom";
 
 export default function Cadastro() {
-
   const [email, setEmail] = useState("");
   const [name, setName] = useState(null);
   const [password, setPasword] = useState("");
@@ -12,13 +10,30 @@ export default function Cadastro() {
   async function autenticar(evento) {
     try {
       evento.preventDefault();
-      const dados = { name, email, password }
+      const dados = { name, email, password };
 
-      const response = await API.post("/users", dados)
+      const response = await API.post("/users", dados);
     } catch (error) {
-
-    }
+      console.log(error.response.status)
+    //   switch (error.response.status) {
+    //     case 200:
+    //       return alert("error 200");
+    //       break;
+    //     case 400:
+    //       return alert("error 400");
+    //       break;
+    //     case 404:
+    //       return alert("error 404");
+    //       break;
+    //     case 409:
+    //       return alert("error 409");
+    //       break;
+    //     default:
+    //       return alert('outro erro')
+    //   }
+    // }
   }
+}
 
   return (
     <div className="z-10 fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center flex-col py-10">
@@ -29,9 +44,16 @@ export default function Cadastro() {
           </h2>
         </div>
         <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6 text-sm font-medium" action="#" method="POST">
+          <form
+            className="space-y-6 text-sm font-medium"
+            action="#"
+            method="POST"
+          >
             <div>
-              <label htmlFor="user" className="block text-left  leading-6 text-gray-900">
+              <label
+                htmlFor="user"
+                className="block text-left  leading-6 text-gray-900"
+              >
                 Nome do usuário:
               </label>
               <div className="mt-2">
@@ -41,13 +63,16 @@ export default function Cadastro() {
                   type="text"
                   autoComplete="name"
                   required
-                  onChanged={(evento) => setName(evento.target.value)}
+                  onChange={(evento) => setName(evento.target.value)}
                   className="block w-full rounded-md  py-1.5 text-gray-900 ring-inset  placeholder:text-gray-400  sm:text-sm "
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="email" className="block text-left  leading-6 text-gray-900">
+              <label
+                htmlFor="email"
+                className="block text-left  leading-6 text-gray-900"
+              >
                 Email:
               </label>
               <div className="mt-2">
@@ -58,14 +83,17 @@ export default function Cadastro() {
                   autoComplete="email"
                   required
                   placeholder="Digite seu email válido..."
-                  onChanged={(evento) => setEmail(evento.target.value)}
+                  onChange={(evento) => setEmail(evento.target.value)}
                   className="block w-full rounded-md pl-1 py-1.5 text-gray-900 ring-inset  placeholder:text-gray-400  sm:text-sm "
                 />
               </div>
             </div>
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block leading-6 text-gray-900">
+                <label
+                  htmlFor="password"
+                  className="block leading-6 text-gray-900"
+                >
                   Senha:
                 </label>
               </div>
@@ -76,13 +104,14 @@ export default function Cadastro() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  onChanged={(evento) => setPasword(evento.target.value)}
+                  onChange={(evento) => setPasword(evento.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
             <div>
               <button
+                onClick={autenticar}
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-black text-white p-3 text-xl font-normal hover:bg-indigo-900 "
               >
@@ -90,13 +119,14 @@ export default function Cadastro() {
               </button>
             </div>
           </form>
-          <Link to="/" className="absolute top-3 right-6 text-2xl font-medium cursor-pointer">x</Link>
+          <Link
+            to="/"
+            className="absolute top-3 right-6 text-2xl font-medium cursor-pointer"
+          >
+            x
+          </Link>
         </div>
       </div>
     </div>
-  )
-
+  );
 }
-
-
-

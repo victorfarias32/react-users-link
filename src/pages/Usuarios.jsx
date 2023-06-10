@@ -22,8 +22,6 @@ export default function ListUsers() {
                 console.log(res.data)
                 setUsers(res.data)
             })
-
-
     }
 
 
