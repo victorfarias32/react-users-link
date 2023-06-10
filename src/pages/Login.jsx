@@ -3,7 +3,7 @@ import { useState } from "react";
 import { API } from "../services/Api";
 
 
-export default function Login({ children }) {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState(null);
   const [password, setPasword] = useState("");

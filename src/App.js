@@ -1,18 +1,10 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro";
-import { useState } from "react";
+import Routes from "./Routes";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-
-        <Route path="/" element={<Login></Login>}></Route>
-        <Route path="/cadastro" element={<Cadastro></Cadastro>}></Route>
-
-      </Routes>
-    </Router>
+   <>
+    <Routes/>
+   </>
 
   );
 }

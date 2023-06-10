@@ -59,7 +59,7 @@ export default function Cadastro() {
                   required
                   placeholder="Digite seu email válido..."
                   onChanged={(evento) => setEmail(evento.target.value)}
-                  className="block w-full rounded-md  py-1.5 text-gray-900 ring-inset  placeholder:text-gray-400  sm:text-sm "
+                  className="block w-full rounded-md pl-1 py-1.5 text-gray-900 ring-inset  placeholder:text-gray-400  sm:text-sm "
                 />
               </div>
             </div>
