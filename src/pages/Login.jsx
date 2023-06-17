@@ -3,7 +3,7 @@ import { useState } from "react";
 import { API } from "../services/Api";
 
 
-export default function Login() {
+function Login() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState(null);
   const [password, setPasword] = useState("");
@@ -13,9 +13,16 @@ export default function Login() {
       evento.preventDefault();
       const dados = { email, password }
 
-      const response = await API.post("/auth/login", dados)
-    } catch (error) {
+      const response = await API.post("/auth/login", dados);
+     
+      localStorage.setItem("logado", true);
 
+      setName(response.data.user);
+
+      window.location.href = "/";
+
+    } catch (error) {
+      alert(error.response.data.error)
     }
   }
   return (
@@ -28,7 +35,7 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form onSubmit={autenticar} className="space-y-6" action="" method="POST">
             <div>
               <label
                 htmlFor="email"
@@ -74,7 +81,7 @@ export default function Login() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"                
               >
                 Login
               </button>
@@ -87,3 +94,5 @@ export default function Login() {
     </>
   );
 }
+
+export default Login;
