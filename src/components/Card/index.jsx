@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Card({ user }) {
+function Card({ user, children }) {
   return (
     <>
       {user ? (
@@ -13,6 +13,7 @@ function Card({ user }) {
                 </Link>
             </div>
         </div>
+        
       ) : (
         <>Sem usuário</>
       )}
