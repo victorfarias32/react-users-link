@@ -28,6 +28,5 @@ export default function UserPerfil() {
     }
   }
 
-  return loading ? <>{Loading()}</>: <Card user={user}>
-  </Card>;
+  return loading ? <>{Loading()}</> : <Card user={user}></Card>;
 }
