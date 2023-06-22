@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { API } from "../services/Api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Cadastro() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState(null);
   const [password, setPasword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate()
+  
 
-  async function autenticar(evento) {
+  async function cadastrar(evento) {
     try {
       evento.preventDefault();
 
@@ -22,7 +22,7 @@ export default function Cadastro() {
 
       const response = await API.post("/users", dados);
 
-      navigate("/")
+      window.location.href = "/"
 
     } catch (error) {
       console.log(error.response.status);
@@ -129,7 +129,7 @@ export default function Cadastro() {
             </div>
             <div>
               <button
-                onClick={autenticar}
+                onClick={cadastrar}
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-black text-white p-3 text-xl font-normal hover:bg-indigo-900 "
               >
